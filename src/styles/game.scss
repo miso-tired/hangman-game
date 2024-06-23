@@ -1,0 +1,23 @@
+// Imports
+@import 'config';
+
+
+.gamebox {
+    @include gameboard
+}
+
+
+.status {
+    @include status-head
+}
+
+
+.the-gallows {
+    display: flex;
+    justify-content: center;
+}
+
+
+.gallows-base {
+    @include gallows-base
+}

@@ -1,0 +1,30 @@
+.gamebox {
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+  background-color: #d6ccc2;
+  margin-top: 15px;
+  padding-top: 20px;
+}
+
+.status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  color: #9e2a2b;
+  font-size: 2em;
+}
+
+.the-gallows {
+  display: flex;
+  justify-content: center;
+}
+
+.gallows-base {
+  height: 10px;
+  width: 300px;
+  background: #605F5E;
+}
+
+/*# sourceMappingURL=game.css.map */

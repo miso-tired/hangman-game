@@ -1,0 +1,33 @@
+// Variables
+$page-color: #d6ccc2;
+$box-color: #d5bdaf;
+$main-text: #9e2a2b;
+$gallows-color: #605F5E;
+
+
+// Mixins
+@mixin gameboard {
+width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+  background-color: $page-color;
+  margin-top: 15px;
+  padding-top: 20px;
+}
+
+
+@mixin status-head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    color: $main-text;
+    font-size: 2em;
+}
+
+
+@mixin gallows-base {
+    height: 10px;
+    width: 300px;
+    background: $gallows-color;
+}
