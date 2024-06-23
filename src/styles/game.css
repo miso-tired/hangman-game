@@ -138,4 +138,8 @@
   aspect-ratio: 14/1;
 }
 
+.keyButton:hover, .keyButton:focus {
+  background-color: #9e2a2b;
+}
+
 /*# sourceMappingURL=game.css.map */

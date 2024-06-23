@@ -93,3 +93,10 @@
     font-size: 1em;
     aspect-ratio: 14/1;
 }
+
+.keyButton {
+    &:hover,
+    &:focus {
+        background-color: $main-text
+    }
+}

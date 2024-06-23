@@ -32,7 +32,7 @@ export function Keys () {
         <div className='keyboard'>
             {KEYS.map(key => {
                 return (
-                    <button style={{ border: '2px solid black', }} key={key}>{key}</button>
+                    <button className="keyButton" style={{ border: '2px solid black', fontWeight: 'bold', fontSize: '2em', textTransform: 'uppercase', cursor: 'pointer' }} key={key}>{key}</button>
                 )
             })}
         </div>
