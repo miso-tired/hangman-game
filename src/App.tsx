@@ -4,6 +4,7 @@ import wordList from './list.json';
 import '../src/styles/game.css'
 import { GallowsAndFigure } from "./components/GallowsAndFigure";
 import { Word } from "./components/Word";
+import { Keys } from "./components/Keys";
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
       </div>
       <GallowsAndFigure />
       <Word />
+      <Keys />
     </div>
   )
 }

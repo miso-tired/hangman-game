@@ -129,4 +129,13 @@
   padding-right: 5px;
 }
 
+.keyboard {
+  display: grid;
+  padding-top: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 10px;
+  font-size: 1em;
+  aspect-ratio: 14/1;
+}
+
 /*# sourceMappingURL=game.css.map */
