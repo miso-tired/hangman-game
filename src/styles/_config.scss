@@ -16,18 +16,23 @@ width: 100%;
 }
 
 @mixin status-head {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 auto;
-    color: $main-text;
-    font-size: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  width: 20vw;
+  color: $main-text;
+  font-size: 2em;
+  border: 6px solid black;
+  border-radius: 35px;
+  margin-bottom: 1em;
+  background-color: $box-color;
 }
 
 @mixin hangbar {
   width: 10px;
   height: 45px;
-  background-color: #605F5E;
+  background-color: $gallows-color;
   position: absolute;
   margin-left: 400px;
 }
