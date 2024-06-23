@@ -3,11 +3,36 @@ const head = (
     <div className="da-head"></div>
 )
 
+const body = (
+    <div className="da-body"></div>
+)
+
+const rightArm = (
+    <div className="right-arm"></div>
+)
+
+const leftArm = (
+    <div className="left-arm"></div>
+)
+
+const rightLeg = (
+    <div className="right-leg"></div>
+)
+
+const leftLeg = (
+    <div className="left-leg"></div>
+)
+
 // Make Gallows for the gameboard.
 export function GallowsAndFigure () {
     return (
         <div className="gallows-container">
             {head}
+            {body}
+            {rightArm}
+            {leftArm}
+            {rightLeg}
+            {leftLeg}
             <div className="the-gallows">
                 <div className="hanging-bar"></div>
                 <div className="top-bar"></div>

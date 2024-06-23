@@ -62,3 +62,25 @@ width: 100%;
   border: 10px solid black;
   border-radius: 100%;
 }
+
+@mixin dabody {
+  width: 10px;
+  height: 100px;
+  background: black;
+}
+
+@mixin arms {
+  width: 100px;
+  height: 10px;
+  background: black;
+  position: absolute;
+  top: 300px;
+}
+
+@mixin legs {
+  width: 100px;
+  height: 10px;
+  background: black;
+  position: absolute;
+  top: 390px;
+}
