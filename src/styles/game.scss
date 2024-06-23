@@ -31,3 +31,10 @@
 .gallows-base {
     @include gallows-base
 }
+
+.da-head {
+    @include dahead;
+    position: relative;
+    top: 115px;
+    right: -47.75vw;
+}

@@ -55,4 +55,14 @@
   background: #605F5E;
 }
 
+.da-head {
+  width: 50px;
+  height: 50px;
+  border: 10px solid black;
+  border-radius: 100%;
+  position: relative;
+  top: 115px;
+  right: -47.75vw;
+}
+
 /*# sourceMappingURL=game.css.map */
