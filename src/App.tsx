@@ -3,6 +3,7 @@ import { useState } from "react";
 import wordList from './list.json';
 import '../src/styles/game.css'
 import { GallowsAndFigure } from "./components/GallowsAndFigure";
+import { Word } from "./components/Word";
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         You Win! Do Better.
       </div>
       <GallowsAndFigure />
+      <Word />
     </div>
   )
 }

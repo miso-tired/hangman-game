@@ -69,3 +69,12 @@
     rotate: -60deg;
     transform-origin: right bottom;
 }
+
+.word {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    gap: 0.10em;
+    font-weight: bold;
+}
