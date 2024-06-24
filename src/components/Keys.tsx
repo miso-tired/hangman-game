@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import '../styles/game.css';
 
 const KEYS = [
