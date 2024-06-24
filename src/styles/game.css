@@ -130,16 +130,24 @@
 }
 
 .keyboard {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   padding-top: 10px;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   gap: 10px;
   font-size: 1em;
-  aspect-ratio: 14/1;
+  aspect-ratio: 28/1;
 }
 
-.keyButton:hover, .keyButton:focus {
+.keyButton:hover:not(:disabled), .keyButton:focus:not(:disabled) {
   background-color: #9e2a2b;
+}
+.keyButton.inactive {
+  opacity: 0.3;
+}
+.keyButton.active {
+  background-color: hsl(356, 56%, 39%);
+  color: white;
 }
 
 /*# sourceMappingURL=game.css.map */

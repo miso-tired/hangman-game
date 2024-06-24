@@ -95,8 +95,17 @@
 }
 
 .keyButton {
-    &:hover,
-    &:focus {
-        background-color: $main-text
+    &:hover:not(:disabled),
+    &:focus:not(:disabled) {
+        background-color: $main-text;
+    }
+
+    &.inactive {
+        opacity: 0.3;
+    }
+
+    &.active {
+        background-color: hsl(356, 56%, 39%);
+        color: white;
     }
 }
