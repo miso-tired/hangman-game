@@ -23,16 +23,17 @@ const leftLeg = (
     <div className="left-leg"></div>
 )
 
+type GallowsAndFigureProps = {
+    guessAmount: number
+}
+
+const whole_body = [head, body, rightArm, leftArm, rightLeg, leftLeg]
+
 // Make Gallows for the gameboard.
-export function GallowsAndFigure () {
+export function GallowsAndFigure ({ guessAmount }: GallowsAndFigureProps) {
     return (
         <div className="gallows-container">
-            {head}
-            {body}
-            {rightArm}
-            {leftArm}
-            {rightLeg}
-            {leftLeg}
+            {whole_body.slice(0, guessAmount)}
             <div className="the-gallows">
                 <div className="hanging-bar"></div>
                 <div className="top-bar"></div>

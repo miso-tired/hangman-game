@@ -7,21 +7,26 @@ const KEYS = [
     "u", "v", "w", "x", "y", "z"
 ];
 
-export function Keys() {
-    const [activeKey, setActiveKey] = useState<string | null>(null);
+type KeyProps = {
+    activeLetters: string[]
+    inactiveLetters: string[]
+    addUsedLetter: (letter: string) => void
+    disabled?: boolean
+}
 
-    const handleClick = (key: string) => {
-        setActiveKey(key);
-    };
-
+export function Keys({ activeLetters, inactiveLetters, addUsedLetter, disabled = false }: KeyProps) {
+    
     return (
         <div className='keyboard'>
             {KEYS.map(key => {
-                const isActive = activeKey === key;
+                const isActive = activeLetters.includes(key)
+                const isInactive = inactiveLetters.includes(key)
                 return (
                     <button
+                        onClick={() => addUsedLetter(key)}
                         key={key}
-                        className={`keyButton ${isActive ? 'active' : ''}`}
+                        className={`keyButton ${isActive ? 'active' : ''} ${isInactive ? 'inactive' : ''}`}
+                        disabled={isInactive || isActive || disabled}
                         style={{ 
                             border: '2px solid black', 
                             fontWeight: 'bold', 
@@ -29,8 +34,6 @@ export function Keys() {
                             textTransform: 'uppercase', 
                             cursor: 'pointer' 
                         }}
-                        onClick={() => handleClick(key)}
-                        disabled={isActive}
                     >
                         {key}
                     </button>
