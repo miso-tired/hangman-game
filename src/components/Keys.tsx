@@ -21,7 +21,7 @@ export function Keys() {
                 return (
                     <button
                         key={key}
-                        className={`keyButton ${isActive ? 'active' : 'inactive'}`}
+                        className={`keyButton ${isActive ? 'active' : ''}`}
                         style={{ 
                             border: '2px solid black', 
                             fontWeight: 'bold', 
@@ -30,7 +30,7 @@ export function Keys() {
                             cursor: 'pointer' 
                         }}
                         onClick={() => handleClick(key)}
-                        disabled={!isActive}
+                        disabled={isActive}
                     >
                         {key}
                     </button>

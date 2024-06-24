@@ -139,12 +139,15 @@
   aspect-ratio: 28/1;
 }
 
-.keyButton:hover:not(:disabled), .keyButton:focus:not(:disabled) {
+.keyButton:hover:not(:disabled), 
+.keyButton:focus:not(:disabled) {
   background-color: #9e2a2b;
 }
+
 .keyButton.inactive {
   opacity: 0.3;
 }
+
 .keyButton.active {
   background-color: hsl(356, 56%, 39%);
   color: white;
