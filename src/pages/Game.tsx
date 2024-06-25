@@ -2,9 +2,9 @@
 import { useCallback, useEffect, useState } from "react";
 import wordList from '../list.json';
 import '../styles/game.css'
-import { GallowsAndFigure } from "./GallowsAndFigure";
-import { Word } from "./Word";
-import { Keys } from "./Keys";
+import { GallowsAndFigure } from "../components/GallowsAndFigure";
+import { Word } from "../components/Word";
+import { Keys } from "../components/Keys";
 
 export function Game () {
     // list words from list.json
@@ -54,7 +54,7 @@ export function Game () {
       <div className="status">
         {!win && !loss && intro}
         {win && "You Win! Refresh for a new game."}
-        {loss && "Do Better. Refresh for a new game"}
+        {loss && "Do Better. Refresh for a new game."}
       </div>
       <GallowsAndFigure guessAmount={wrongLetters.length} />
       <Word 

@@ -1,6 +1,6 @@
 // Imports
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { Game } from "./components/Game";
+import { Game } from "./pages/Game";
 
 
 function App() {
