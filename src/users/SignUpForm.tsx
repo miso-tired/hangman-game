@@ -7,9 +7,8 @@ function SignUpForm() {
     const navigate = useNavigate()
 
     const [user, setUser] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
+        name: '',
+        username: '',
         password: ''
     })
 
@@ -24,33 +23,23 @@ function SignUpForm() {
     return (
         <form onSubmit={handleSubmit}>
             <div>
-                <label htmlFor="firstName">First Name</label>
+                <label htmlFor="name">Name</label>
                 <input 
                     type="text" 
-                    id="firstName" 
-                    value={user.firstName} 
-                    onChange={(e) => setUser({ ...user, firstName: e.target.value })} 
-                    placeholder="First Name" 
+                    id="name" 
+                    value={user.name} 
+                    onChange={(e) => setUser({ ...user, name: e.target.value })} 
+                    placeholder="Name" 
                 />
             </div>
             <div>
-                <label htmlFor="lastName">Last Name</label>
+                <label htmlFor="username">Username</label>
                 <input 
                     type="text" 
-                    id="lastName" 
-                    value={user.lastName} 
-                    onChange={(e) => setUser({ ...user, lastName: e.target.value })} 
-                    placeholder="Last Name" 
-                />
-            </div>
-            <div>
-                <label htmlFor="email">Email</label>
-                <input 
-                    type="email" 
-                    id="email" 
-                    value={user.email} 
-                    onChange={(e) => setUser({ ...user, email: e.target.value })} 
-                    placeholder="Email" 
+                    id="username" 
+                    value={user.username} 
+                    onChange={(e) => setUser({ ...user, username: e.target.value })} 
+                    placeholder="Username" 
                 />
             </div>
             <div>
