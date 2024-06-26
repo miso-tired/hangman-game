@@ -1,7 +1,6 @@
-const { user } = require('../models')
 const express = require('express')
 const router = express.Router()
-
+const { user } = require('../models')
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
@@ -21,33 +20,44 @@ router.post('/register', async (req, res) => {
 
 router.get('/login', async (req, res) => {
     try {
-        const { username, password } = req.query
+        const { username, password } = req.body;
 
-        if (!username) {
+        if (!username || !password) {
             return res.status(400).json({
-                message: 'Invalid username'
-            })
+                message: 'Invalid username or password'
+            });
         }
 
-        const foundUser = await user.findOne({ where: { username } })
+        const foundUser = await user.findOne({ where: { username } });
+
         if (!foundUser) {
             return res.status(404).json({
-                message: 'No existing user with information provided.'
-            })
+                message: 'No existing user with the provided username'
+            });
         }
-        const match = await bcrypt.compare(password, foundUser.password)
-        if(!match) {
+
+        const match = await bcrypt.compare(password, foundUser.password);
+
+        if (!match) {
             return res.status(401).json({
-                message: 'Incorrect password'
-            })
+                message: 'Invalid password'
+            });
         }
-        res.json(foundUser)
+
+        res.json({
+            id: foundUser.id,
+            name: foundUser.name,
+            username: foundUser.username,
+            createdAt: foundUser.createdAt,
+            updatedAt: foundUser.updatedAt
+        });
+
     } catch (error) {
-        console.error(error)
+        console.error(error);
         res.status(500).json({
             message: 'Server Error'
-        })
+        });
     }
-})
+});
 
-module.exports = router
+module.exports = router;
