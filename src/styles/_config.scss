@@ -8,26 +8,79 @@ $gallows-color: #605F5E;
 // Mixins
 @mixin gameboard {
 width: 100%;
-  height: 100vh;
+  height: 95vh;
   margin: 0 auto;
   background-color: $page-color;
   margin-top: 15px;
   padding-top: 20px;
 }
 
-
 @mixin status-head {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 auto;
-    color: $main-text;
-    font-size: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  width: 20vw;
+  color: $main-text;
+  font-size: 2em;
+  border: 6px solid black;
+  border-radius: 35px;
+  margin-bottom: 1em;
+  background-color: $box-color;
 }
 
+@mixin hangbar {
+  width: 10px;
+  height: 45px;
+  background-color: $gallows-color;
+  position: absolute;
+  margin-left: 400px;
+}
+
+@mixin top-bar {
+  width: 200px;
+  height: 10px;
+  background-color: $gallows-color;
+  margin-left: 190px;
+}
+
+@mixin big-boi-bar {
+  width: 10px;
+  height: 450px;
+  background-color: $gallows-color;
+}
 
 @mixin gallows-base {
     height: 10px;
     width: 300px;
     background: $gallows-color;
+}
+
+@mixin dahead {
+  width: 50px;
+  height: 50px;
+  border: 10px solid black;
+  border-radius: 100%;
+}
+
+@mixin dabody {
+  width: 10px;
+  height: 100px;
+  background: black;
+}
+
+@mixin arms {
+  width: 100px;
+  height: 10px;
+  background: black;
+  position: absolute;
+  top: 300px;
+}
+
+@mixin legs {
+  width: 100px;
+  height: 10px;
+  background: black;
+  position: absolute;
+  top: 390px;
 }
