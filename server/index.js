@@ -2,7 +2,7 @@
 require('dotenv').config();
 const express = require('express')
 const app = express()
-const PORT = process.env.PORT
+const PORT = 3000
 const { sequelize } = require('./models')
 
 // Middleware
@@ -13,6 +13,8 @@ app.get('/', (req, res) => {
         message: 'Hi. I am the testing page.'
     })
 })
+
+app.use('/api/users', require('./controllers/user'))
 
 app.listen(PORT, async () => {
     try {
