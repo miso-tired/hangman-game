@@ -4,8 +4,6 @@ const router = express.Router()
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
-const myPlaintextPassword = 's0/\/\P4$$w0rD';
-const someOtherPlaintextPassword = 'not_bacon';
 
 router.post('/register', async (req, res) => {
     try {
@@ -21,16 +19,35 @@ router.post('/register', async (req, res) => {
     }
 })
 
-// router.get('/login', async (req, res) => {
-//     try {
-//         const user = await user.find()
-//         res.json(user)
-//     } catch (error) {
-//         console.error(error)
-//         res.status(500).json({
-//             message: 'Server Error'
-//         })
-//     }
-// })
+router.get('/login', async (req, res) => {
+    try {
+        const { username, password } = req.query
+
+        if (!username) {
+            return res.status(400).json({
+                message: 'Invalid username'
+            })
+        }
+
+        const foundUser = await user.findOne({ where: { username } })
+        if (!foundUser) {
+            return res.status(404).json({
+                message: 'No existing user with information provided.'
+            })
+        }
+        const match = await bcrypt.compare(password, foundUser.password)
+        if(!match) {
+            return res.status(401).json({
+                message: 'Incorrect password'
+            })
+        }
+        res.json(foundUser)
+    } catch (error) {
+        console.error(error)
+        res.status(500).json({
+            message: 'Server Error'
+        })
+    }
+})
 
 module.exports = router
