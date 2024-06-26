@@ -28,18 +28,16 @@ function SignUpForm() {
                     type="text" 
                     id="name" 
                     value={user.name} 
-                    onChange={(e) => setUser({ ...user, name: e.target.value })} 
-                    placeholder="Name" 
+                    onChange={(e) => setUser({ ...user, name: e.target.value })}  
                 />
             </div>
             <div>
                 <label htmlFor="username">Username</label>
                 <input 
                     type="text" 
-                    id="username" 
+                    id="lastName" 
                     value={user.username} 
-                    onChange={(e) => setUser({ ...user, username: e.target.value })} 
-                    placeholder="Username" 
+                    onChange={(e) => setUser({ ...user, username: e.target.value })}  
                 />
             </div>
             <div>
@@ -48,8 +46,7 @@ function SignUpForm() {
                     type="password" 
                     id="password" 
                     value={user.password} 
-                    onChange={(e) => setUser({ ...user, password: e.target.value })} 
-                    placeholder="Password" 
+                    onChange={(e) => setUser({ ...user, password: e.target.value })}
                 />
             </div>
             <button type="submit">Sign Up</button>

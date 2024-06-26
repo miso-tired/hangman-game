@@ -10,7 +10,7 @@ function LoginForm() {
 
     // Login information
     const [credentials, setCredentials] = useState({
-        email: '',
+        username: '',
         password: ''
     })
 
@@ -54,15 +54,15 @@ function LoginForm() {
             <form onSubmit={handleSubmit}>
                 <div className="row">
                     <div className="col-sm-6 form-group">
-                        <label htmlFor="email">Email</label>
+                        <label htmlFor="username">Username</label>
                         <input
-                            type="email"
+                            type="username"
                             required
-                            value={credentials.email}
-                            onChange={e => setCredentials({ ...credentials, email: e.target.value })}
+                            value={credentials.username}
+                            onChange={e => setCredentials({ ...credentials, username: e.target.value })}
                             className="form-control"
-                            id="email"
-                            name="email"
+                            id="username"
+                            name="username"
                         />
                     </div>
                     <div className="col-sm-6 form-group">
