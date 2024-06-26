@@ -8,10 +8,12 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
+
       },
-      id: {
-        type: Sequelize.STRING
-      },
+      // user_id: {
+      //   type: Sequelize.INTEGER,
+      //   references: {model: 'user', key: 'id'}
+      // },
       username: {
         type: Sequelize.STRING
       },

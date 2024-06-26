@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express')
 const app = express()
 const PORT = process.env.PORT
+const { sequelize } = require('./models')
 
 // Middleware
 app.use(express.json())
@@ -13,7 +14,13 @@ app.get('/', (req, res) => {
     })
 })
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
+    try {
+        await sequelize.authenticate();
+        console.log('Connected to DB.')
+    } catch (error) {
+        console.error('Unable to connect to the DB. Do better.', error)
+    }
     console.log(`Listening on port: ${PORT}`)
 })
 
@@ -21,4 +28,4 @@ app.listen(PORT, () => {
 // id, name, username, password
 
 // Matches
-// id, username, wins, losses
+// id, user_id, username, wins, losses
