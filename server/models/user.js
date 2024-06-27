@@ -20,14 +20,14 @@ module.exports = (sequelize, DataTypes) => {
       unique: true,
     },
     password: DataTypes.STRING,
-      wins: {
-        type: DataTypes.INTEGER,
-        defaultValue: 0,
-      },
-      losses: {
-        type: DataTypes.INTEGER,
-        defaultValue: 0,
-      }
+    wins: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
+    losses: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    }
   }, {
     sequelize,
     modelName: 'user',
