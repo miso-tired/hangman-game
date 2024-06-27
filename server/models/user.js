@@ -19,7 +19,15 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       unique: true,
     },
-    password: DataTypes.STRING
+    password: DataTypes.STRING,
+      wins: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+      },
+      losses: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+      }
   }, {
     sequelize,
     modelName: 'user',

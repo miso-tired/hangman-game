@@ -4,6 +4,8 @@ const { user } = require('../models')
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
+
+// POST new accounts
 router.post('/register', async (req, res) => {
     try {
         const { name, username, password } = req.body
@@ -13,11 +15,13 @@ router.post('/register', async (req, res) => {
     } catch (error) {
         console.error(error)
         res.status(500).json({
-            message: 'Server Error'
+            message: 'Server Error.'
         })
     }
 })
 
+
+// GET login
 router.get('/login', async (req, res) => {
     try {
         const { username, password } = req.body;
@@ -55,9 +59,87 @@ router.get('/login', async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({
-            message: 'Server Error'
+            message: 'Server Error.'
         });
     }
 });
+
+// GET match history
+router.get('/matches/:userId', async(req, res) => {
+    try {
+        const { userId } = req.params
+
+        const matchHistory = await matchRoutes.findAll ({ where: { user_id: userId }})
+
+        if (!matchHIstory) {
+            return res.status(404).json({
+                message: 'No match history for this user.'
+            })
+        }
+        res.json(matchHistory)
+    } catch (error) {
+        console.error(error)
+        res.status(500).json({
+            message: 'Server Error.'
+        })
+    }
+})
+
+// POST update wins
+router.post('/update-wins/:userId', async (req, res) => {
+    try {
+        const { userId } = req.params
+        const user = await user.findByPk(userId)
+
+        if (!user) {
+            return res.status(404).json({
+                message: 'User not found.'
+            })
+        }
+
+        // Add wins to user data
+        user.wins +=1
+        await user.save()
+
+        res.json({
+            message: 'Wins updated.',
+            user
+        })
+    } catch (error) {
+        console.error(error)
+        res.status(500).json({
+            message: 'Server Error.'
+        })
+    }
+})
+
+// POST update losses
+router.post('/update-losses/:userId', async (res, res) => {
+    try {
+        const { userId } = req.params
+        const user = await user.findByPk(userId)
+
+        if (!user) {
+            return res.status(404).json({
+                message: 'User not found.'
+            })
+        }
+
+        // Add losses to user data
+        user.losses +=1
+        await user.save()
+
+        res.json({
+            message: 'Losses updated.',
+            user
+        })
+    } catch (error) {
+        console.error(error)
+        res.status(500).json({
+            message: 'Server Error.'
+        })
+    }
+})
+
 
 module.exports = router;
