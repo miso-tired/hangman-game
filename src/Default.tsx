@@ -7,11 +7,7 @@ interface DefProps {
 
 const Def: React.FC<DefProps> = ({ children }) => {
     return (
-        <html>
-            <head>
-                <title>Hangman Game</title>
-            </head>
-            <body>
+        <>
                 <nav>
                     <ul>
                         <li>
@@ -26,8 +22,7 @@ const Def: React.FC<DefProps> = ({ children }) => {
                     </ul>
                 </nav>
                 {children}
-            </body>
-        </html>
+        </>
     );
 };
 

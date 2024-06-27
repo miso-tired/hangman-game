@@ -1,8 +1,25 @@
 // Imports
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Def from './Default';
 
 const Home: React.FC = () => {
+    
+    const [matches, setMatches] = useState()
+
+    useEffect(() => {
+
+        const fetchMatches = async () => {
+            const response = await fetch('/api/users/matches/1')
+            const json = await response.json()
+
+            if (matches) {
+                setMatches(json)
+            }
+        }
+
+        fetchMatches()
+    }, [])
+
     return (
         <Def>
             <h1>Hang the Man.</h1>
