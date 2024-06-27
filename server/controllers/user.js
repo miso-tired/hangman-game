@@ -53,7 +53,9 @@ router.get('/login', async (req, res) => {
             name: foundUser.name,
             username: foundUser.username,
             createdAt: foundUser.createdAt,
-            updatedAt: foundUser.updatedAt
+            updatedAt: foundUser.updatedAt,
+            wins: foundUser.wins,
+            losses: foundUser.losses,
         });
 
     } catch (error) {
@@ -114,7 +116,7 @@ router.post('/update-wins/:userId', async (req, res) => {
 })
 
 // POST update losses
-router.post('/update-losses/:userId', async (res, res) => {
+router.post('/update-losses/:userId', async (req, res) => {
     try {
         const { userId } = req.params
         const user = await user.findByPk(userId)
