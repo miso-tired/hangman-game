@@ -1,8 +1,8 @@
 import { createContext, ReactNode, useState } from "react";
 
 interface CurrentUserContextType {
-    currentUser: any; // Replace 'any' with the actual type of currentUser
-    setCurrentUser: React.Dispatch<React.SetStateAction<any>> | ((user: any) => void); // Replace 'any' with the actual type of currentUser
+    currentUser: any; 
+    setCurrentUser: React.Dispatch<React.SetStateAction<any>> | ((user: any) => void); 
 }
 
 export const CurrentUser = createContext<CurrentUserContextType | undefined>(undefined);
@@ -12,7 +12,7 @@ interface CurrentUserProviderProps {
 }
 
 export function CurrentUserProvider({ children }: CurrentUserProviderProps) {
-    const [currentUser, setCurrentUser] = useState<any>(null); // Replace 'any' with the actual type of currentUser
+    const [currentUser, setCurrentUser] = useState<any>(null); 
 
     return (
         <CurrentUser.Provider value={{ currentUser, setCurrentUser }}>
