@@ -13,11 +13,28 @@ function SignUpForm() {
     })
 
     // Form submission logic
-    const handleSubmit = (event: React.FormEvent) => {
+    const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
+
+        try {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/users/register`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(user)
+            });
+
+            if (!response.ok) {
+                throw new Error('Something went wrong!');
+            }
 
         // Go to hangman game after sign up
         navigate('/game')
+    } catch (error) {
+        console.error({
+            message: 'Something wrong with submission.'
+        })
     }
 
     return (
@@ -25,10 +42,11 @@ function SignUpForm() {
             <div>
                 <label htmlFor="name">Name</label>
                 <input 
-                    type="text" 
+                    type="name" 
                     id="name" 
                     value={user.name} 
                     onChange={(e) => setUser({ ...user, name: e.target.value })}  
+                    required
                 />
             </div>
             <div>
@@ -38,6 +56,7 @@ function SignUpForm() {
                     id="lastName" 
                     value={user.username} 
                     onChange={(e) => setUser({ ...user, username: e.target.value })}  
+                    required
                 />
             </div>
             <div>
@@ -47,11 +66,13 @@ function SignUpForm() {
                     id="password" 
                     value={user.password} 
                     onChange={(e) => setUser({ ...user, password: e.target.value })}
+                    required
                 />
             </div>
             <button type="submit">Sign Up</button>
         </form>
     );
+}
 }
 
 export default SignUpForm
