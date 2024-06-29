@@ -16,25 +16,25 @@ function SignUpForm() {
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
 
-        try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/users/register`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(user)
-            });
+        // try {
+        //     const response = await fetch(`http://localhost:5173/api/users/register`, {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         },
+        //         body: JSON.stringify(user)
+        //     });
 
-            if (!response.ok) {
-                throw new Error('Something went wrong!');
-            }
+        //     if (!response.ok) {
+        //         throw new Error('Something went wrong!');
+        //     }
 
         // Go to hangman game after sign up
         navigate('/game')
-    } catch (error) {
-        console.error({
-            message: 'Something wrong with submission.'
-        })
+    // } catch (error) {
+    //     console.error({
+    //         message: 'Something wrong with submission.'
+    //     })
     }
 
     return (
@@ -73,6 +73,6 @@ function SignUpForm() {
         </form>
     );
 }
-}
+
 
 export default SignUpForm
