@@ -47,8 +47,6 @@ export function Game () {
     }
   }, [usedLetters])
   
-  console.log(guessWord)
-
   return (
     <div className="gamebox">
       <div className="status">
