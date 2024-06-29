@@ -16,8 +16,8 @@ function SignUpForm() {
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
 
-        // Go to hangman game after sign up
-        navigate('/game')
+        // Redirect to home page after sign up
+        navigate('/')
     }
 
     return (
