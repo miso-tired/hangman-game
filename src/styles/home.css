@@ -1,0 +1,24 @@
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 95vh;
+  background-color: #d6ccc2;
+  border: 2px solid black;
+  margin-top: 10px;
+}
+.landing-container h1 {
+  color: #9e2a2b;
+  font-size: 2.5em;
+}
+.landing-container h3 {
+  color: #9e2a2b;
+  font-size: 1.5em;
+}
+.landing-container p {
+  color: #9e2a2b;
+  font-size: 1em;
+}
+
+/*# sourceMappingURL=home.css.map */

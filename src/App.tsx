@@ -1,5 +1,5 @@
 // App.tsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './Home';
@@ -22,10 +22,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/game" element={<Game />} />
         <Route path="/register" element={<SignUpForm />} />
-        <Route
-          path="/login"
-          element={<LoginForm setCurrentUser={setCurrentUser} />}
-        />
+        <Route path="/login" element={<LoginForm setCurrentUser={setCurrentUser} />} />
       </Routes>
     </Router>
   );

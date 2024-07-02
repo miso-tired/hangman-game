@@ -5,65 +5,69 @@ import '../styles/game.css'
 import { GallowsAndFigure } from "../components/GallowsAndFigure";
 import { Word } from "../components/Word";
 import { Keys } from "../components/Keys";
+import { Link } from "react-router-dom";
 
 export function Game () {
     // list words from list.json
   const words = wordList.words;
-
-  // make array
-  const [guessWord] = useState(() => {
-    // randomize word picked from word array
-    return words[Math.floor(Math.random() * words.length)];
-  });
-
-  // for letters that have been used 
+  const [guessWord, setGuessWord] = useState(() => words[Math.floor(Math.random() * words.length)]);
   const [usedLetters, setUsedLetters] = useState<string[]>([]);
 
-  const wrongLetters = usedLetters.filter(letter => !guessWord.includes(letter))
+  // Keep track of wins and losses
+  const [wins, setWins] = useState(0);
+  const [losses, setLosses] = useState(0);
 
-  const intro = "What word is it?"
-  const loss = wrongLetters.length >= 6
-  const win = guessWord.split("").every(letter => usedLetters.includes(letter))
+
+  // Used letters
+  const wrongLetters = usedLetters.filter(letter => !guessWord.includes(letter));
+  const intro = "What word is it?";
+  const isLoss = wrongLetters.length >= 6;
+  const isWin = guessWord.split("").every(letter => usedLetters.includes(letter));
 
   const addUsedLetter = useCallback((letter: string) => {
-    if (usedLetters.includes(letter) || win || loss) return
-
-    setUsedLetters(currentLetters => [...currentLetters, letter])
-  }, [usedLetters, win, loss])
+    if (usedLetters.includes(letter) || isWin || isLoss) return;
+    setUsedLetters(currentLetters => [...currentLetters, letter]);
+  }, [usedLetters, isWin, isLoss]);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      const key = e.key
+      const key = e.key.toLowerCase();
+      if (!key.match(/^[a-z]$/)) return;
+      e.preventDefault();
+      addUsedLetter(key);
+    };
 
-      if (!key.match(/^[a-z]$/)) return
-
-      e.preventDefault()
-      addUsedLetter(key)
-    }
-    document.addEventListener("keypress", handler)
-
+    document.addEventListener("keypress", handler);
     return () => {
-      document.removeEventListener("keypress", handler)
+      document.removeEventListener("keypress", handler);
+    };
+  }, [usedLetters]);
+
+  useEffect(() => {
+    if (isWin) {
+      setWins(prevWins => prevWins + 1);
+    } else if (isLoss) {
+      setLosses(prevLosses => prevLosses + 1);
     }
-  }, [usedLetters])
+  }, [isWin, isLoss]);
+
+  const resetGame = () => {
+    setUsedLetters([]);
+    const newWord = words[Math.floor(Math.random() * words.length)];
+    setGuessWord(newWord); // Correctly use setGuessWord to update guessWord state
+  };
 
   return (
     <div className="gamebox">
       <div className="status">
-        {!win && !loss && intro}
-        {win && "You Win! Refresh for a new game."}
-        {loss && "Do Better. Refresh for a new game."}
+        {!isWin && !isLoss && intro}
+        {isWin && <div>You Win! Total Wins: {wins}</div>}
+        {isLoss && <div>Do Better. Total Losses: {losses}</div>}
+        <Link className="newGame" onClick={resetGame} to={""}>New Game</Link>
       </div>
       <GallowsAndFigure guessAmount={wrongLetters.length} />
-      <Word 
-      reveal={loss}
-      usedLetters={usedLetters} 
-      guessWord={guessWord} />
-      <Keys 
-      disabled={win || loss}
-      activeLetters={usedLetters.filter(letter => guessWord.includes(letter))} 
-      inactiveLetters={usedLetters} 
-      addUsedLetter={addUsedLetter} />
+      <Word reveal={isLoss} usedLetters={usedLetters} guessWord={guessWord} />
+      <Keys disabled={isWin || isLoss} activeLetters={usedLetters.filter(letter => guessWord.includes(letter))} inactiveLetters={usedLetters} addUsedLetter={addUsedLetter} />
     </div>
-  )
+  );
 }

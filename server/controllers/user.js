@@ -10,7 +10,11 @@ router.post("/register", async (req, res) => {
     const { name, username, password } = req.body;
     const hash = await bcrypt.hash(password, saltRounds);
     const newUser = await user.create({ name, username, password: hash });
-    res.status(201).json(newUser);
+
+    // Exclude the password field from the response
+    const { password: _, ...userWithoutPassword } = newUser.toJSON();
+    
+    res.status(201).json(userWithoutPassword);
   } catch (error) {
     console.error(error);
     res.status(500).json({
@@ -18,7 +22,6 @@ router.post("/register", async (req, res) => {
     });
   }
 });
-
 // POST login
 router.post("/login", async (req, res) => {
   try {

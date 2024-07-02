@@ -1,6 +1,7 @@
 // Imports
 import React, { useEffect, useState } from 'react';
 import Def from './Default';
+import '../src/styles/home.css'
 
 const Home: React.FC = () => {
     
@@ -22,9 +23,11 @@ const Home: React.FC = () => {
 
     return (
         <Def>
-            <h1>Hang the Man.</h1>
-            <h3>If you don't figure out the word in six guesses.</h3>
-            <p>(Save him. He is innocent.)</p>
+            <div className="landing-container">
+                <h1>Hang the Man.</h1>
+                <h3>If you don't figure out the word in six guesses.</h3>
+                <p>(Save him. He is innocent.)</p>
+            </div>
         </Def>
     );
 };
