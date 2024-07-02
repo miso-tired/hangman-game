@@ -55,19 +55,20 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// GET match history
+// GET match history with wins and losses
 router.get("/matches/:userId", async (req, res) => {
   try {
     const { userId } = req.params;
-    const matchHistory = await matches.findAll({ where: { user_id: userId } });
+    const foundUser = await user.findByPk(userId);
 
-    if (!matchHistory || matchHistory.length === 0) {
-      return res.status(404).json({ message: "No match history for this user." });
+    if (!foundUser) {
+      return res.status(404).json({ message: "User not found." });
     }
 
-    res.json(matchHistory);
+    // Return only wins and losses
+    res.json({ wins: foundUser.wins, losses: foundUser.losses });
   } catch (error) {
-    console.error("Error fetching match history: ", error);
+    console.error("Error fetching match history:", error);
     res.status(500).json({ message: "Server Error.", error: error.message });
   }
 });
