@@ -1,11 +1,11 @@
-// Imports
-import { useState } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Home from "./Home";
-import { Game } from "./pages/Game";
-import SignUpForm from "./users/SignUpForm";
-import LoginForm from "./users/LoginForm";
+// App.tsx
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Home from './Home';
+import { Game } from './pages/Game';
+import SignUpForm from './users/SignUpForm';
+import LoginForm from './users/LoginForm';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
