@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+interface User {
+  username: string;
+  password: string;
+}
+
 function SignUpForm() {
   const navigate = useNavigate();
   const [user, setUser] = useState({
@@ -9,7 +14,7 @@ function SignUpForm() {
     password: "",
   });
   const [errorMessage, setErrorMessage] = useState("");
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
 
   // Form submission logic
   const handleSubmit = async (event: React.FormEvent) => {
@@ -27,7 +32,7 @@ function SignUpForm() {
       const data = await response.json();
 
       if (response.status === 201) {
-        setCurrentUser(data);
+        data && setCurrentUser(data);
         // Redirect to home page after sign up
         navigate("/");
       } else {
@@ -74,6 +79,9 @@ function SignUpForm() {
         <button type="submit">Register</button>
       </form>
       {errorMessage && <p>{errorMessage}</p>}
+      {currentUser && (
+        <p>Hi {currentUser.username}, you are successfully registered!</p>
+      )}
     </>
   );
 }

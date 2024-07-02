@@ -46,8 +46,6 @@ export function Game () {
       document.removeEventListener("keypress", handler)
     }
   }, [usedLetters])
-  
-  console.log(guessWord)
 
   return (
     <div className="gamebox">

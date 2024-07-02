@@ -1,22 +1,27 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useState, Dispatch, SetStateAction } from "react";
+
+interface User {
+  username: string;
+  password: string;
+}
 
 interface CurrentUserContextType {
-    currentUser: any; 
-    setCurrentUser: React.Dispatch<React.SetStateAction<any>> | ((user: any) => void); 
+  currentUser: User | null;
+  setCurrentUser: Dispatch<SetStateAction<User | null>>;
 }
 
 export const CurrentUser = createContext<CurrentUserContextType | undefined>(undefined);
 
 interface CurrentUserProviderProps {
-    children: ReactNode;
+  children: ReactNode;
 }
 
 export function CurrentUserProvider({ children }: CurrentUserProviderProps) {
-    const [currentUser, setCurrentUser] = useState<any>(null); 
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
 
-    return (
-        <CurrentUser.Provider value={{ currentUser, setCurrentUser }}>
-            {children}
-        </CurrentUser.Provider>
-    );
+  return (
+    <CurrentUser.Provider value={{ currentUser, setCurrentUser }}>
+      {children}
+    </CurrentUser.Provider>
+  );
 }
