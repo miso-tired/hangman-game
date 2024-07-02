@@ -92,8 +92,8 @@ export function Game() {
     <div className="gamebox">
       <div className="status">
         {!isWin && !isLoss && intro}
-        {isWin && <div>You Win! Total Wins: {wins}</div>}
-        {isLoss && <div>Do Better. Total Losses: {losses}</div>}
+        {isWin && <div>You Win! Current Session Wins: {wins}</div>}
+        {isLoss && <div>Do Better. Current Session Losses: {losses}</div>}
         <Link className="newGame" onClick={resetGame} to={""}>
           New Game
         </Link>
