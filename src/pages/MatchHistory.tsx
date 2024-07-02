@@ -30,7 +30,7 @@ const MatchesPage: React.FC = () => {
   return (
     <div className="landing-container">
       <h1>Matches Page</h1>
-      <h2>User Stats for User ID: {userId}</h2>
+      <h2>Your Current Wins and Losses</h2>
       <div>
         <p>Wins: {userStats.wins}</p>
         <p>Losses: {userStats.losses}</p>
