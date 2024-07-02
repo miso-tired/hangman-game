@@ -1,22 +1,43 @@
-// Imports
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function SignUpForm() {
   const navigate = useNavigate();
-
   const [user, setUser] = useState({
     name: "",
     username: "",
     password: "",
   });
+  const [errorMessage, setErrorMessage] = useState("");
+  const [currentUser, setCurrentUser] = useState(null);
 
   // Form submission logic
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
-    // Redirect to home page after sign up
-    navigate("/");
+    try {
+      const response = await fetch('http://localhost:3000/api/users/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user)
+      });
+
+      const data = await response.json();
+
+      if (response.status === 201) {
+        setCurrentUser(data);
+        // Redirect to home page after sign up
+        navigate("/");
+      } else {
+        setErrorMessage(data.message);
+      }
+      console.log(data);
+    } catch (error) {
+      console.error("Error during registration:", error);
+      setErrorMessage("Server Error. Please try again later.");
+    }
   };
 
   return (
@@ -36,7 +57,7 @@ function SignUpForm() {
           <label htmlFor="username">Username</label>
           <input
             type="text"
-            id="lastName"
+            id="username"
             value={user.username}
             onChange={(e) => setUser({ ...user, username: e.target.value })}
           />
@@ -52,6 +73,7 @@ function SignUpForm() {
         </div>
         <button type="submit">Register</button>
       </form>
+      {errorMessage && <p>{errorMessage}</p>}
     </>
   );
 }

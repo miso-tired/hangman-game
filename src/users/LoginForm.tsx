@@ -1,45 +1,43 @@
-// Imports
-import { useContext, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function LoginForm() {
-
-    const navigate = useNavigate()
-
-    // Need to implement user state
-
+    const navigate = useNavigate();
+    
+    // User state
+    const [currentUser, setCurrentUser] = useState(null);
+    
     // Login information
     const [credentials, setCredentials] = useState({
         username: '',
         password: ''
-    })
+    });
 
     // Error message
-    const [errorMessage, setErrorMessage] = useState(null)
+    const [errorMessage, setErrorMessage] = useState(null);
 
     async function handleSubmit(e: { preventDefault: () => void }) {
-        e.preventDefault()
-    //    const response = await fetch('http://localhost:3000/authentication/', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify(credentials)
-    //    })
+        e.preventDefault();
+        const response = await fetch('http://localhost:3000/api/users/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(credentials)
+        });
 
-    //    const data = await response.json()
+        const data = await response.json();
 
-    //    if (response.status === 200) {
-    //     setCurrentUser(data.user)
+        if (response.status === 200) {
+            setCurrentUser(data);
 
-        // Redirect to home page
-        navigate('/')
-    //    } else {
-    //     setErrorMessage(data.message)
-    //    }
+            // Redirect to home page
+            navigate('/');
+        } else {
+            setErrorMessage(data.message);
+        }
 
-    //    console.log(data)
-
+        console.log(data);
     }
 
     return (
@@ -58,7 +56,7 @@ function LoginForm() {
                     <div className="col-sm-6 form-group">
                         <label htmlFor="username">Username</label>
                         <input
-                            type="username"
+                            type="text"
                             required
                             value={credentials.username}
                             onChange={e => setCredentials({ ...credentials, username: e.target.value })}
@@ -86,8 +84,4 @@ function LoginForm() {
     )
 }
 
-export default LoginForm
-
-function setCurrentUser(user: any) {
-    throw new Error("Function not implemented.")
-}
+export default LoginForm;
