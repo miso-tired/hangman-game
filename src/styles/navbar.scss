@@ -4,21 +4,27 @@ nav{
     border: 2px solid black;
     background: #d5bdaf;
     width: 100%;
+    
+    ul {
+        list-style-type: none;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 4em;
+    }
+  
+    li a {
+        text-decoration: none;
+        color: $main-text;
+        font-size: 1.5em;
+    }
+  
+    li a:hover {
+        color: $gallows-color;
+    }
 }
 
-ul {
-    list-style-type: none;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 4em;
-  }
-  
-li a {
+.user-greeting {
     text-decoration: none;
-    color: $main-text;
-}
-  
-li a:hover {
-    color: $gallows-color;
-}
-  
+    color: #9e2a2b;
+    font-size: 1.5em;
+  }

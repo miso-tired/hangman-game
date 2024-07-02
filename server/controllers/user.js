@@ -9,44 +9,35 @@ router.post("/register", async (req, res) => {
   try {
     const { name, username, password } = req.body;
     const hash = await bcrypt.hash(password, saltRounds);
-    const newUser = await user.create({ name, username, password: hash });
+    const newUser = await user.create({ name, username, password: hash, wins: 0, losses: 0 });
 
-    // Exclude the password field from the response
     const { password: _, ...userWithoutPassword } = newUser.toJSON();
-    
     res.status(201).json(userWithoutPassword);
   } catch (error) {
     console.error(error);
-    res.status(500).json({
-      message: "Server Error.",
-    });
+    res.status(500).json({ message: "Server Error." });
   }
 });
+
 // POST login
 router.post("/login", async (req, res) => {
   try {
     const { username, password } = req.body;
 
     if (!username || !password) {
-      return res.status(400).json({
-        message: "Invalid username or password",
-      });
+      return res.status(400).json({ message: "Invalid username or password" });
     }
 
     const foundUser = await user.findOne({ where: { username } });
 
     if (!foundUser) {
-      return res.status(404).json({
-        message: "No existing user with the provided username",
-      });
+      return res.status(404).json({ message: "No existing user with the provided username" });
     }
 
     const match = await bcrypt.compare(password, foundUser.password);
 
     if (!match) {
-      return res.status(401).json({
-        message: "Invalid password",
-      });
+      return res.status(401).json({ message: "Invalid password" });
     }
 
     res.json({
@@ -60,9 +51,7 @@ router.post("/login", async (req, res) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({
-      message: "Server Error.",
-    });
+    res.status(500).json({ message: "Server Error." });
   }
 });
 
@@ -73,18 +62,13 @@ router.get("/matches/:userId", async (req, res) => {
     const matchHistory = await matches.findAll({ where: { user_id: userId } });
 
     if (!matchHistory || matchHistory.length === 0) {
-      return res.status(404).json({
-        message: "No match history for this user.",
-      });
+      return res.status(404).json({ message: "No match history for this user." });
     }
 
     res.json(matchHistory);
   } catch (error) {
-    console.error("Error fetching match history: ", error); // Log detailed error
-    res.status(500).json({
-      message: "Server Error.",
-      error: error.message, // Send the error message in the response
-    });
+    console.error("Error fetching match history: ", error);
+    res.status(500).json({ message: "Server Error.", error: error.message });
   }
 });
 
@@ -92,27 +76,19 @@ router.get("/matches/:userId", async (req, res) => {
 router.post("/update-wins/:userId", async (req, res) => {
   try {
     const { userId } = req.params;
-    const user = await user.findByPk(userId);
+    const foundUser = await user.findByPk(userId);
 
-    if (!user) {
-      return res.status(404).json({
-        message: "User not found.",
-      });
+    if (!foundUser) {
+      return res.status(404).json({ message: "User not found." });
     }
 
-    // Add wins to user data
-    user.wins += 1;
-    await user.save();
+    foundUser.wins += 1;
+    await foundUser.save();
 
-    res.json({
-      message: "Wins updated.",
-      user,
-    });
+    res.json({ message: "Wins updated.", user: foundUser });
   } catch (error) {
     console.error(error);
-    res.status(500).json({
-      message: "Server Error.",
-    });
+    res.status(500).json({ message: "Server Error." });
   }
 });
 
@@ -120,28 +96,19 @@ router.post("/update-wins/:userId", async (req, res) => {
 router.post("/update-losses/:userId", async (req, res) => {
   try {
     const { userId } = req.params;
+    const foundUser = await user.findByPk(userId);
 
-    const user = await user.findByPk(userId);
-
-    if (!user) {
-      return res.status(404).json({
-        message: "User not found.",
-      });
+    if (!foundUser) {
+      return res.status(404).json({ message: "User not found." });
     }
 
-    // Add losses to user data
-    user.losses += 1;
-    await user.save();
+    foundUser.losses += 1;
+    await foundUser.save();
 
-    res.json({
-      message: "Losses updated.",
-      user,
-    });
+    res.json({ message: "Losses updated.", user: foundUser });
   } catch (error) {
     console.error(error);
-    res.status(500).json({
-      message: "Server Error.",
-    });
+    res.status(500).json({ message: "Server Error." });
   }
 });
 

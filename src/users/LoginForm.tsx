@@ -26,11 +26,12 @@ const LoginForm: React.FC<LoginFormProps> = ({ setCurrentUser }) => {
       },
       body: JSON.stringify(credentials),
     });
-
+  
     const data = await response.json();
-
+  
     if (response.status === 200) {
       setCurrentUser(data);
+      localStorage.setItem('currentUser', JSON.stringify(data));
       navigate("/");
     } else {
       setErrorMessage(data.message);

@@ -1,27 +1,37 @@
-import { createContext, ReactNode, useState, Dispatch, SetStateAction } from "react";
-
-interface User {
-  username: string;
-  password: string;
-}
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 interface CurrentUserContextType {
-  currentUser: User | null;
-  setCurrentUser: Dispatch<SetStateAction<User | null>>;
+  currentUser: { id: number; name: string; username: string; wins: number; losses: number } | null;
+  setCurrentUser: React.Dispatch<React.SetStateAction<any>>;
 }
-
-export const CurrentUser = createContext<CurrentUserContextType | undefined>(undefined);
 
 interface CurrentUserProviderProps {
   children: ReactNode;
 }
 
-export function CurrentUserProvider({ children }: CurrentUserProviderProps) {
-  const [currentUser, setCurrentUser] = useState<User | null>(null);
+const CurrentUserContext = createContext<CurrentUserContextType | undefined>(undefined);
+
+export const CurrentUserProvider: React.FC<CurrentUserProviderProps> = ({ children }) => {
+  const [currentUser, setCurrentUser] = useState<CurrentUserContextType['currentUser']>(null);
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('currentUser') || 'null');
+    if (user) {
+      setCurrentUser(user);
+    }
+  }, []);
 
   return (
-    <CurrentUser.Provider value={{ currentUser, setCurrentUser }}>
+    <CurrentUserContext.Provider value={{ currentUser, setCurrentUser }}>
       {children}
-    </CurrentUser.Provider>
+    </CurrentUserContext.Provider>
   );
-}
+};
+
+export const useCurrentUser = () => {
+  const context = useContext(CurrentUserContext);
+  if (!context) {
+    throw new Error('useCurrentUser must be used within a CurrentUserProvider');
+  }
+  return context;
+};

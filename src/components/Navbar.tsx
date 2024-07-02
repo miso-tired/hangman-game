@@ -34,6 +34,9 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser, onLogout }) => {
         </li>
         {currentUser ? (
           <>
+            <li className="matches-link">
+              <Link to={`/matches/${currentUser.id}`}>Matches</Link>
+            </li>
             <li className="logout-link">
               <Link onClick={handleLogout} to={""}>
                 Logout

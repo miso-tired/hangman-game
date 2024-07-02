@@ -3,22 +3,25 @@ nav {
   background: #d5bdaf;
   width: 100%;
 }
-
-ul {
+nav ul {
   list-style-type: none;
   display: flex;
   justify-content: space-between;
   padding: 0 4em;
 }
-
-li a {
+nav li a {
   text-decoration: none;
   color: #9e2a2b;
   font-size: 1.5em;
 }
-
-li a:hover {
+nav li a:hover {
   color: #605F5E;
+}
+
+.user-greeting {
+  text-decoration: none;
+  color: #9e2a2b;
+  font-size: 1.5em;
 }
 
 /*# sourceMappingURL=navbar.css.map */
