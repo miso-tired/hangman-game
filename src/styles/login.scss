@@ -1,0 +1,39 @@
+@import 'config';
+
+.login-container {
+    @include page-containers
+}
+
+.form-container {
+    @include form-containers
+}
+
+.box {
+    @include form-boxes
+}
+
+.title {
+    text-align: center;
+    padding-bottom: 0.5em;
+}
+
+.form-group {
+    margin-bottom: 1.5em;
+}
+
+.input-field {
+    @include inputs
+}
+
+.btn {
+    @include buttons
+}
+
+.btn-primary {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.text-center {
+  text-align: center;
+}

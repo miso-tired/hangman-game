@@ -2,7 +2,7 @@
 
 nav{
     border: 2px solid black;
-    background: #d5bdaf;
+    background: $box-color;
     width: 100%;
     
     ul {
@@ -25,6 +25,6 @@ nav{
 
 .user-greeting {
     text-decoration: none;
-    color: #9e2a2b;
+    color: $main-text;
     font-size: 1.5em;
   }

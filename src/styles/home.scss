@@ -1,3 +1,5 @@
+@import 'config';
+
 .landing-container {
     display: flex;
     flex-direction: column;
@@ -9,17 +11,17 @@
     margin-top: 10px;
 
     h1 {
-        color: #9e2a2b;
+        color: $main-text;
         font-size: 2.5em;
     }
 
     h3 {
-        color: #9e2a2b;
+        color: $main-text;
         font-size: 1.5em;
     }
 
     p {
-        color: #9e2a2b;
+        color: $main-text;
         font-size: 1em;
     }
 }

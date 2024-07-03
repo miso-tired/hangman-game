@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import '../styles/login.css';
 
 interface LoginFormProps {
   setCurrentUser: (user: any) => void;
@@ -39,47 +40,52 @@ const LoginForm: React.FC<LoginFormProps> = ({ setCurrentUser }) => {
   }
 
   return (
-    <main>
-      <h1>Login</h1>
-      {errorMessage !== null && (
-        <div className="alert alert-danger" role="alert">
-          {errorMessage}
-        </div>
-      )}
-      <form onSubmit={handleSubmit}>
-        <div className="row">
-          <div className="col-sm-6 form-group">
-            <label htmlFor="username">Username</label>
+    <div className="login-container">
+    <div className="form-container">
+      <div className="box">
+        <h1 className="title">Login</h1>
+        {errorMessage !== null && (
+          <div className="alert alert-danger" role="alert">
+            {errorMessage}
+          </div>
+        )}
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
             <input
+            placeholder="Username"
               type="text"
               required
               value={credentials.username}
               onChange={(e) =>
                 setCredentials({ ...credentials, username: e.target.value })
               }
-              className="form-control"
+              className="input-field"
               id="username"
               name="username"
             />
           </div>
-          <div className="col-sm-6 form-group">
-            <label htmlFor="password">Password</label>
+          <div className="form-group">
             <input
+              placeholder="Password"
               type="password"
               required
               value={credentials.password}
               onChange={(e) =>
                 setCredentials({ ...credentials, password: e.target.value })
               }
-              className="form-control"
+              className="input-field"
               id="password"
               name="password"
             />
           </div>
-        </div>
-        <input className="btn btn-primary" type="submit" value="Login" />
-      </form>
-    </main>
+          <button className="btn btn-primary" type="submit">Login</button>
+        </form>
+        <p className="text-center">
+          Don't have an account? <a href="/register" className="text-blue-500">Sign up</a>
+        </p>
+      </div>
+    </div>
+    </div>
   );
 };
 

@@ -1,19 +1,20 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import '../styles/signupform.css';
 
 interface User {
   username: string;
   password: string;
 }
 
-function SignUpForm() {
+const SignUpForm: React.FC = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState({
     name: "",
     username: "",
     password: "",
   });
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [currentUser, setCurrentUser] = useState<User | null>(null);
 
   // Form submission logic
@@ -46,44 +47,48 @@ function SignUpForm() {
   };
 
   return (
-    <>
-      <h1>Register</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            value={user.name}
-            onChange={(e) => setUser({ ...user, name: e.target.value })}
-          />
+    <div className="signup-container">
+      <div className="form-container">
+        <div className="box">
+          <h1 className="title">Register</h1>
+          {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <input
+                type="text"
+                placeholder="Name"
+                value={user.name}
+                onChange={(e) => setUser({ ...user, name: e.target.value })}
+                className="input-field"
+                required
+              />
+            </div>
+            <div className="form-group">
+              <input
+                type="text"
+                placeholder="Username"
+                value={user.username}
+                onChange={(e) => setUser({ ...user, username: e.target.value })}
+                className="input-field"
+                required
+              />
+            </div>
+            <div className="form-group">
+              <input
+                type="password"
+                placeholder="Password"
+                value={user.password}
+                onChange={(e) => setUser({ ...user, password: e.target.value })}
+                className="input-field"
+                required
+              />
+            </div>
+            <button className="btn btn-primary" type="submit">Register</button>
+          </form>
         </div>
-        <div>
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            id="username"
-            value={user.username}
-            onChange={(e) => setUser({ ...user, username: e.target.value })}
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            value={user.password}
-            onChange={(e) => setUser({ ...user, password: e.target.value })}
-          />
-        </div>
-        <button type="submit">Register</button>
-      </form>
-      {errorMessage && <p>{errorMessage}</p>}
-      {currentUser && (
-        <p>Hi {currentUser.username}, you are successfully registered!</p>
-      )}
-    </>
+      </div>
+    </div>
   );
-}
+};
 
 export default SignUpForm;
