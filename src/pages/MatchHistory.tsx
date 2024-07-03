@@ -29,11 +29,10 @@ const MatchesPage: React.FC = () => {
 
   return (
     <div className="landing-container">
-      <h1>Matches Page</h1>
-      <h2>Your Current Wins and Losses</h2>
+      <h1>Your Wins and Losses</h1>
       <div>
-        <p>Wins: {userStats.wins}</p>
-        <p>Losses: {userStats.losses}</p>
+        <h2>Wins: {userStats.wins}</h2>
+        <h2>Losses: {userStats.losses}</h2>
       </div>
     </div>
   );

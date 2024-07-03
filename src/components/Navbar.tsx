@@ -22,33 +22,23 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser, onLogout }) => {
 
   return (
     <nav>
-      <ul className="list">
-        <li className="home-link">
-          <Link to="/">Home</Link>
-        </li>
-        <li className="game-link">
-          <Link to="/game">Game</Link>
-        </li>
-        <li className="register-link">
-          <Link to="/register">Register</Link>
-        </li>
+      <ul>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/game">Game</Link></li>
         {currentUser ? (
           <>
-            <li className="matches-link">
-              <Link to={`/matches/${currentUser.id}`}>Matches</Link>
-            </li>
+            <li><Link to={`/matches/${currentUser.id}`}>Matches</Link></li>
+            <li className="user-greeting">Welcome, {currentUser.username}!</li>
             <li className="logout-link">
               <Link onClick={handleLogout} to={""}>
                 Logout
               </Link>
             </li>
-            <li className="user-greeting">Hi, {currentUser.username}</li>
           </>
         ) : (
-          <li className="login-link">
-            <Link to="/login">Login</Link>
-          </li>
+          <li><Link to="/login">Login</Link></li>
         )}
+        {!currentUser && <li><Link to="/register">Register</Link></li>}
       </ul>
     </nav>
   );

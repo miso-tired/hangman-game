@@ -25,7 +25,7 @@ const Home: React.FC = () => {
         <Def>
             <div className="landing-container">
                 <h1>Hang the Man.</h1>
-                <h3>If you don't figure out the word in six guesses.</h3>
+                <h2>If you don't figure out the word in six guesses.</h2>
                 <p>(Save him. He is innocent.)</p>
             </div>
         </Def>
