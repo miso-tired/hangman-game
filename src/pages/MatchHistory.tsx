@@ -6,12 +6,10 @@ const MatchesPage: React.FC = () => {
   const { userId } = useParams<{ userId: string }>();
   const [userStats, setUserStats] = useState<{ wins: number, losses: number } | null>(null);
 
-  const apiUrl = process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:3000/api';
-
   useEffect(() => {
     const fetchUserStats = async () => {
       try {
-        const response = await fetch(`${apiUrl}/users/matches/${userId}`);
+        const response = await fetch(`http://localhost:3000/api/users/matches/${userId}`);
         if (!response.ok) {
           throw new Error('Failed to fetch user stats');
         }
@@ -23,7 +21,7 @@ const MatchesPage: React.FC = () => {
     };
 
     fetchUserStats();
-  }, [userId, apiUrl]);
+  }, [userId]);
 
   if (!userStats) {
     return <div>Loading...</div>;

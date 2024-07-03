@@ -12,7 +12,7 @@ export function Game() {
   const [guessWord, setGuessWord] = useState(() => words[Math.floor(Math.random() * words.length)]);
   const [usedLetters, setUsedLetters] = useState<string[]>([]);
 
-  // Keep Track of wins and losses
+  // Keep track of wins and losses
   const [wins, setWins] = useState(0);
   const [losses, setLosses] = useState(0);
   const { currentUser } = useCurrentUser();
@@ -21,8 +21,6 @@ export function Game() {
   const intro = "What word is it?";
   const isLoss = wrongLetters.length >= 6;
   const isWin = guessWord.split("").every(letter => usedLetters.includes(letter));
-
-  const apiUrl = process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:3000/api';
 
   const addUsedLetter = useCallback(
     (letter: string) => {
@@ -46,7 +44,7 @@ export function Game() {
     };
   }, [usedLetters, addUsedLetter]);
 
-  // Win and loss record
+  // Win and Loss record
   useEffect(() => {
     const updateWinLoss = async (type: 'wins' | 'losses') => {
       if (!currentUser) {
@@ -56,7 +54,7 @@ export function Game() {
     
       const endpoint = type === 'wins' ? 'update-wins' : 'update-losses';
       try {
-        const response = await fetch(`${apiUrl}/users/${endpoint}/${currentUser.id}`, {
+        const response = await fetch(`http://localhost:3000/api/users/${endpoint}/${currentUser.id}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -74,16 +72,16 @@ export function Game() {
       }
     };
 
-    if (isWin) {
-      setWins(prevWins => prevWins + 1);
-      updateWinLoss('wins');
-    } else if (isLoss) {
-      setLosses(prevLosses => prevLosses + 1);
-      updateWinLoss('losses');
-    }
-  }, [isWin, isLoss, currentUser, apiUrl]);
+  if (isWin) {
+    setWins(prevWins => prevWins + 1);
+    updateWinLoss('wins');
+  } else if (isLoss) {
+    setLosses(prevLosses => prevLosses + 1);
+    updateWinLoss('losses');
+  }
+}, [isWin, isLoss, currentUser]);
 
-  // Reset game with button
+  // Reset game without refreshing page
   const resetGame = () => {
     setUsedLetters([]);
     const newWord = words[Math.floor(Math.random() * words.length)];
