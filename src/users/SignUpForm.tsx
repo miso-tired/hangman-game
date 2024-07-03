@@ -84,7 +84,10 @@ const SignUpForm: React.FC = () => {
               />
             </div>
             <button className="btn btn-primary" type="submit">Register</button>
-          </form>
+            </form>
+          {currentUser && (
+            <p>Welcome, {currentUser.username}! You have successfully registered.</p>
+          )}
         </div>
       </div>
     </div>
