@@ -20,7 +20,7 @@ I wanted to create a simple game using TypeScript, SCSS, and React for the front
 <div style="display: flex; justify-content: space-around;">
     <img src='https://img.icons8.com/?size=100&id=bzf0DqjXFHIW&format=png&color=000000' alt="TypeScript Logo">
     <img src='https://img.icons8.com/?size=100&id=uJM6fQYqDaZK&format=png&color=000000' alt="React Logo">
-    <img src='https://banner2.cleanpng.com/20180420/pzw/kisspng-sass-cascading-style-sheets-preprocessor-less-post-meng-5adaa47ca100e3.1728846115242783966595.jpg' width=90 height=90 alt="SASS Logo">
+    <img src='https://sass-lang.com/assets/img/styleguide/seal-color.png' width=90 height=90 alt="SASS Logo">
     <img src='https://upload.wikimedia.org/wikipedia/commons/f/f1/Vitejs-logo.svg' width=90 height=90 alt="Vite Logo">
 </div>
 
