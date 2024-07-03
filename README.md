@@ -17,10 +17,12 @@ I wanted to make a simple game using TypeScript, Sass, and React for the fronten
 - SCSS (Syntactically Awesome Style Sheets)
 - Vite
 
-<img src='https://img.icons8.com/?size=100&id=bzf0DqjXFHIW&format=png&color=000000' alt="TypeScript Logo">
-<img src='https://img.icons8.com/?size=100&id=uJM6fQYqDaZK&format=png&color=000000' alt="React Logo">
-<img src='https://banner2.cleanpng.com/20180420/pzw/kisspng-sass-cascading-style-sheets-preprocessor-less-post-meng-5adaa47ca100e3.1728846115242783966595.jpg' width=90 height=90 alt="SASS Logo">
-<img src='https://upload.wikimedia.org/wikipedia/commons/f/f1/Vitejs-logo.svg' width=90 height=90 alt="Vite Logo">
+<div style="display: flex; justify-content: space-around;">
+    <img src='https://img.icons8.com/?size=100&id=bzf0DqjXFHIW&format=png&color=000000' alt="TypeScript Logo">
+    <img src='https://img.icons8.com/?size=100&id=uJM6fQYqDaZK&format=png&color=000000' alt="React Logo">
+    <img src='https://banner2.cleanpng.com/20180420/pzw/kisspng-sass-cascading-style-sheets-preprocessor-less-post-meng-5adaa47ca100e3.1728846115242783966595.jpg' width=90 height=90 alt="SASS Logo">
+    <img src='https://upload.wikimedia.org/wikipedia/commons/f/f1/Vitejs-logo.svg' width=90 height=90 alt="Vite Logo">
+</div>
 
 **Backend:**
 
@@ -29,9 +31,12 @@ I wanted to make a simple game using TypeScript, Sass, and React for the fronten
 - Express.js
 - Sequelize (ORM for PostgreSQL)
 
-<img src='https://static.vecteezy.com/system/resources/previews/027/127/463/original/javascript-logo-javascript-icon-transparent-free-png.png' width=90 height=90 alt="JavaScript Logo">
-<img src='https://static-00.iconduck.com/assets.00/node-js-icon-227x256-913nazt0.png' width=90 height=90 alt="Node.js Logo">
-<img src='https://cdn.freebiesupply.com/logos/large/2x/sequelize-logo-png-transparent.png' width=90 height=90 alt="Sequelize Logo">
+<div style="display: flex; justify-content: space-around;">
+    <img src='https://static.vecteezy.com/system/resources/previews/027/127/463/original/javascript-logo-javascript-icon-transparent-free-png.png' width=90 height=90 alt="JavaScript Logo">
+    <img src='https://static-00.iconduck.com/assets.00/node-js-icon-227x256-913nazt0.png' width=90 height=90 alt="Node.js Logo">
+    <img src='https://cdn.freebiesupply.com/logos/large/2x/sequelize-logo-png-transparent.png' width=90 height=90 alt="Sequelize Logo">
+    <img src='https://img.icons8.com/?size=100&id=38561&format=png&color=000000' width=90 height=90 alt="PostgreSQL Logo">
+</div>
 
 **Database:**
 
