@@ -10,7 +10,7 @@ const Home: React.FC = () => {
     useEffect(() => {
 
         const fetchMatches = async () => {
-            const response = await fetch('/api/users/matches/:id')
+            const response = await fetch('/api/users/matches/1')
             const json = await response.json()
 
             if (matches) {
