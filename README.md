@@ -6,7 +6,7 @@ Your typical hangman game. However, the list of guessable words is currently lim
 
 ## Behind the Project
 
-I wanted to make a simple game using TypeScript, Sass, and React for the frontend. For the backend I also use TypeScript, in addition to Redux, Sequelize, and Bcryptjs. The main focus of this project was strengthening my skills in TypeScript along with authentication and database manipulation. Users should be able to register and login with their emails and passwords. Logged in users should be able to keep track of their wins and losses in the game with the help of a connection to a PostgreSQL database.
+I wanted to create a simple game using TypeScript, SCSS, and React for the frontend, aiming for a clean and interactive user interface. For the backend, I used JavaScript along with Redux for managing state, Sequelize for database interactions with PostgreSQL, and Bcryptjs for secure password handling. The main goal of this project was to improve my TypeScript skills and learn how to handle user authentication and database operations effectively. Users can register and log in using their username and password, and once logged in, they can track their wins and losses, which are stored in a PostgreSQL database.
 
 ## Tech Stack
 
@@ -30,6 +30,7 @@ I wanted to make a simple game using TypeScript, Sass, and React for the fronten
 - Node.js
 - Express.js
 - Sequelize (ORM for PostgreSQL)
+- Bcryptjs (Password hashing)
 
 <div style="display: flex; justify-content: space-around;">
     <img src='https://static.vecteezy.com/system/resources/previews/027/127/463/original/javascript-logo-javascript-icon-transparent-free-png.png' width=90 height=90 alt="JavaScript Logo">
@@ -121,15 +122,15 @@ npm run dev
 ## Addressing Bugs in the Game
 
 1. There is a bug where wins and losses are sometimes not recorded onto the matches page after the user completes a game. It commonly happens when a user first logs in to their account. Currently, to bypass this issue, users have to refresh the page after logging in, before starting a game.
-2. When the game page is first rendered, the gallows for the hangman appears. However, after the user's first wrong guess, the gallows shifts downwards. Not game breaking, but a bit unpleasant to gameplay. This could possibly be due to how divs are set up around the game page and relative positioning of components.
+2. When the game page is first rendered, the gallows for the hangman appears. However, after the user's first wrong guess, the gallows and keyboard shift downwards. Not game breaking, but a bit unpleasant to gameplay. This could possibly be due to how divs are set up around the game page and relative positioning of components.
 
 ![Gallows before incorrect guess](src/assets/PreGuess.png)
 ![Gallows after incorrect guess](src/assets/PostGuess.png)
 
 ## Plans for the Future
 
-1. I would like to implement a feature in the navbar that displays a user's win and loss record. It should automatically update once a user finishes a game and starts a new one. This is just so that users who are interested in their record won't have to visit a separate page.
-2. Instead of a fixed list of words, I would like to have a feature that randomly generates any English word. It prevent players from memorizing the 50 words that make up the list so far. This feature would also allow the words to be guessed range anywhere from 3 letter words to 8 letter words.
+1. Planning to implement a feature in the navbar that displays a user's win and loss record. It should automatically update once a user finishes a game and starts a new one. This is just so that users who are interested in their record won't have to visit a separate page.
+2. Instead of a fixed list of words, it would be better to have a feature that randomly generates any English word. It prevent players from memorizing the 50 words that make up the list so far. This feature would also allow the words to be guessed range anywhere from 3 letter words to 8 letter words.
 
 ## Deployment Link
 
