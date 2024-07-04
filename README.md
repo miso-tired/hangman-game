@@ -132,6 +132,7 @@ npm run dev
 
 1. Planning to implement a feature in the navbar that displays a user's win and loss record. It should automatically update once a user finishes a game and starts a new one. This is just so that users who are interested in their record won't have to visit a separate page.
 2. Instead of a fixed list of words, it would be better to have a feature that randomly generates any English word. It prevent players from memorizing the 50 words that make up the list so far. This feature would also allow the words to be guessed range anywhere from 3 letter words to 8 letter words.
+3. Improve the styling for the game and each page.
 
 ## Deployment Link
 
