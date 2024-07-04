@@ -123,6 +123,7 @@ npm run dev
 
 1. There is a bug where wins and losses are sometimes not recorded onto the matches page after the user completes a game. It commonly happens when a user first logs in to their account. Currently, to bypass this issue, users have to refresh the page after logging in, before starting a game.
 2. When the game page is first rendered, the gallows for the hangman appears. However, after the user's first wrong guess, the gallows and keyboard shift downwards. Not game breaking, but a bit unpleasant to gameplay. This could possibly be due to how divs are set up around the game page and relative positioning of components.
+3. Issue where deployment version will be able to add new users to PostgreSQL database after they use the sign up form, but new wins is not updated when logged in users complete a game, or view their wins and losses page. Believe this is due to API fetch error on the frontend from inspecting the dev tools. Currently working on a fix.
 
 ![Gallows before incorrect guess](src/assets/PreGuess.png)
 ![Gallows after incorrect guess](src/assets/PostGuess.png)
