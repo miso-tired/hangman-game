@@ -29,8 +29,3 @@ app.listen(PORT, async () => {
   console.log(`Listening on port: ${PORT}`);
 });
 
-// Users
-// id, name, username, password (FORGOT TO ADD WINS AND LOSSES)
-
-// Matches
-// id, user_id, username, wins, losses
