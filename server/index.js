@@ -17,6 +17,7 @@ app.get("/", (req, res) => {
   });
 });
 
+// API 
 app.use("/api/users", require("./controllers/user"));
 
 app.listen(PORT, async () => {
