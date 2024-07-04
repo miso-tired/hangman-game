@@ -1,3 +1,7 @@
+body {
+  overflow: hidden;
+}
+
 .login-container {
   height: 90vh;
   background-color: #d6ccc2;
